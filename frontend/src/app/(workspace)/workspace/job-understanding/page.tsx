@@ -5,10 +5,26 @@ import { PageHeader, SectionTitle } from "@/components/shared/typography";
 import { AnimatedContainer, GlassPanel } from "@/components/shared/containers";
 import { activeJob } from "@/lib/mock/jobs";
 import { Badge } from "@/components/ui/badge";
-import { Briefcase, MapPin, Clock, Building, Sparkles } from "lucide-react";
+import { Briefcase, MapPin, Clock, Building, Sparkles, Play, Loader2 } from "lucide-react";
 import { AIStatus } from "@/components/shared/status";
+import { Button } from "@/components/ui/button";
+import { useMutation } from "@tanstack/react-query";
+import { rankWorkspace } from "@/lib/api/ranking";
+import { useAppStore } from "@/lib/store";
+import { useRouter } from "next/navigation";
 
 export default function JobUnderstandingPage() {
+  const router = useRouter();
+  const setWorkspace = useAppStore(state => state.setWorkspace);
+  
+  const rankMutation = useMutation({
+    mutationFn: () => rankWorkspace(activeJob.id, activeJob.description),
+    onSuccess: (data) => {
+      setWorkspace(data);
+      router.push("/workspace/candidate-intelligence");
+    }
+  });
+
   return (
     <div className="space-y-8">
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
@@ -16,7 +32,17 @@ export default function JobUnderstandingPage() {
           title="Job Understanding" 
           description="AI parsed requirements from the active job description."
         />
-        <AIStatus status="complete" className="mb-8 bg-background/50 border border-emerald-500/20 px-3 py-1.5 rounded-full" />
+        <div className="flex items-center gap-4 mb-8">
+          <AIStatus status="complete" className="bg-background/50 border border-emerald-500/20 px-3 py-1.5 rounded-full" />
+          <Button 
+            onClick={() => rankMutation.mutate()} 
+            disabled={rankMutation.isPending}
+            className="gap-2"
+          >
+            {rankMutation.isPending ? <Loader2 className="w-4 h-4 animate-spin" /> : <Play className="w-4 h-4" />}
+            {rankMutation.isPending ? "Ranking..." : "Rank Candidates"}
+          </Button>
+        </div>
       </div>
 
       <AnimatedContainer delay={0.1}>

@@ -4,11 +4,36 @@ import React from "react";
 import { PageHeader } from "@/components/shared/typography";
 import { AnimatedContainer, GlassPanel } from "@/components/shared/containers";
 import { AIStatus } from "@/components/shared/status";
-import { mockCandidates } from "@/lib/mock/candidates";
-import { Database, Search, ArrowRight } from "lucide-react";
+import { Database, Search, ArrowRight, FileWarning } from "lucide-react";
 import { Progress } from "@/components/ui/progress";
+import { useAppStore } from "@/lib/store";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export default function HybridRetrievalPage() {
+  const workspace = useAppStore(state => state.workspace);
+
+  if (!workspace) {
+    return (
+      <div className="flex flex-col items-center justify-center h-[60vh] space-y-6 text-center">
+        <FileWarning className="w-16 h-16 text-muted-foreground opacity-50" />
+        <div className="space-y-2">
+          <h2 className="text-2xl font-bold">No Active Workspace</h2>
+          <p className="text-muted-foreground max-w-md mx-auto">
+            You need to select a job description and run the ranking pipeline before viewing retrieval results.
+          </p>
+        </div>
+        <Link href="/workspace/job-understanding">
+          <Button className="gap-2">
+            Select Job Description <ArrowRight className="w-4 h-4" />
+          </Button>
+        </Link>
+      </div>
+    );
+  }
+
+  const candidates = workspace.candidates.sort((a, b) => b.hybrid_score - a.hybrid_score);
+
   return (
     <div className="space-y-8">
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
@@ -83,16 +108,16 @@ export default function HybridRetrievalPage() {
                 </tr>
               </thead>
               <tbody className="divide-y divide-border/50">
-                {mockCandidates.map((candidate) => (
-                  <tr key={candidate.id} className="hover:bg-muted/30 transition-colors">
+                {candidates.slice(0, 100).map((candidate) => (
+                  <tr key={candidate.candidate_id} className="hover:bg-muted/30 transition-colors">
                     <td className="px-6 py-4">
-                      <div className="font-medium text-foreground">{candidate.name}</div>
-                      <div className="text-xs text-muted-foreground">{candidate.currentRole}</div>
+                      <div className="font-medium text-foreground">{candidate.candidate_id}</div>
+                      <div className="text-xs text-muted-foreground">Candidate Profile</div>
                     </td>
-                    <td className="px-6 py-4 text-blue-500 font-medium">0.892</td>
-                    <td className="px-6 py-4 text-amber-500 font-medium">14.320</td>
+                    <td className="px-6 py-4 text-blue-500 font-medium">---</td>
+                    <td className="px-6 py-4 text-amber-500 font-medium">---</td>
                     <td className="px-6 py-4 font-bold text-primary flex items-center gap-2">
-                      {candidate.hybridScore.toFixed(1)} <ArrowRight className="w-3 h-3 text-muted-foreground" />
+                      {(candidate.hybrid_score * 100).toFixed(1)} <ArrowRight className="w-3 h-3 text-muted-foreground" />
                     </td>
                   </tr>
                 ))}

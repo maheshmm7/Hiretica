@@ -1,4 +1,4 @@
-from typing import Dict, List
+from typing import Dict, List, Any
 
 from pydantic import BaseModel, Field
 
@@ -37,3 +37,42 @@ class HealthResponse(BaseModel):
 class MetricsResponse(BaseModel):
     startup_time_ms: float
     is_ready: bool
+
+
+class WorkspaceCandidate(BaseModel):
+    candidate_id: str
+    overall_rank: int
+    final_score: float
+    
+    hybrid_score: float
+    recruiter_score: float
+    behavior_score: float
+    
+    ranking_breakdown: Dict[str, float]
+    evidence_summary: List[Any]
+    
+    reasoning: str
+    positive_factors: List[str]
+    negative_factors: List[str]
+
+
+class DashboardMetrics(BaseModel):
+    total_candidates: int
+    avg_score: float
+    avg_hybrid: float
+    avg_recruiter: float
+    avg_behavior: float
+
+
+class ChartData(BaseModel):
+    recruiter_distribution: Dict[str, int]
+    behavior_distribution: Dict[str, int]
+
+
+class WorkspaceResponse(BaseModel):
+    job_summary: Dict[str, Any]
+    pipeline_metrics: Dict[str, Any]
+    dashboard_metrics: DashboardMetrics
+    chart_data: ChartData
+    candidates: List[WorkspaceCandidate]
+    submission_preview: List[SubmissionCandidate]

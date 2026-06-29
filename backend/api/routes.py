@@ -5,7 +5,8 @@ from core.pipeline import AIPipeline
 from .dependencies import get_pipeline
 from .exceptions import PipelineError
 from .schemas import (ExplainRequest, ExplainResponse, HealthResponse,
-                      MetricsResponse, RankRequest, RankResponse)
+                      MetricsResponse, RankRequest, RankResponse,
+                      WorkspaceResponse)
 
 router = APIRouter()
 system_router = APIRouter()
@@ -57,6 +58,18 @@ def rank_candidates(request: RankRequest, pipeline: AIPipeline = Depends(get_pip
         return RankResponse(job_id=request.job_id, candidates=submission)
     except Exception as e:
         raise PipelineError(f"Pipeline failed: {str(e)}", status_code=500)
+
+
+@router.post("/workspace", response_model=WorkspaceResponse, tags=["Workspace"])
+def run_workspace(request: RankRequest, pipeline: AIPipeline = Depends(get_pipeline)):
+    if not request.job_description.strip():
+        raise HTTPException(status_code=400, detail="Job description cannot be empty.")
+        
+    try:
+        response_dict = pipeline.run_workspace(request.job_id, request.job_description)
+        return WorkspaceResponse(**response_dict)
+    except Exception as e:
+        raise PipelineError(f"Workspace pipeline failed: {str(e)}", status_code=500)
 
 
 @router.post("/explain", response_model=ExplainResponse, tags=["Explainability"])
