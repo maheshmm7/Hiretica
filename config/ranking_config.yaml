@@ -1,3 +1,12 @@
+retrieval:
+  faiss_top_n: 500
+  hybrid_top_k: 250
+
+fusion:
+  alpha: 0.65
+  beta: 0.35
+  normalization: minmax
+
 weights:
   technical_fit: 0.35
   career_progression: 0.25

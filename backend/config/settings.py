@@ -2,6 +2,15 @@ import os
 import yaml
 from pydantic import BaseModel, Field
 
+class RetrievalConfig(BaseModel):
+    faiss_top_n: int
+    hybrid_top_k: int
+
+class FusionConfig(BaseModel):
+    alpha: float
+    beta: float
+    normalization: str
+
 class WeightsConfig(BaseModel):
     technical_fit: float
     career_progression: float
@@ -58,6 +67,8 @@ class ThresholdsConfig(BaseModel):
     max_years_experience: int
 
 class RankingConfig(BaseModel):
+    retrieval: RetrievalConfig
+    fusion: FusionConfig
     weights: WeightsConfig
     dimensions: DimensionsConfig
     boosts: BoostsConfig
