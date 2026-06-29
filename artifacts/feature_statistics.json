@@ -1,0 +1,96 @@
+{
+  "row_count": 100000,
+  "generation_timestamp": "2026-06-29T01:11:05.976802",
+  "columns": {
+    "candidate_id": {
+      "null_count": 0,
+      "unique_values": 100000
+    },
+    "years_of_experience": {
+      "null_count": 0,
+      "min": 1.0,
+      "max": 16.9,
+      "mean": 7.166318999999999
+    },
+    "job_hopping_index": {
+      "null_count": 0,
+      "min": 0.7,
+      "max": 15.6,
+      "mean": 2.3989714956349206
+    },
+    "production_ai_score": {
+      "null_count": 0,
+      "min": 0,
+      "max": 5,
+      "mean": 0.60307
+    },
+    "research_ratio": {
+      "null_count": 0,
+      "min": 0.0,
+      "max": 1.0,
+      "mean": 0.07748038888888888
+    },
+    "core_skill_match_count": {
+      "null_count": 0,
+      "min": 0,
+      "max": 7,
+      "mean": 0.37018
+    },
+    "vector_db_experience": {
+      "null_count": 0,
+      "unique_values": 2
+    },
+    "avg_skill_proficiency": {
+      "null_count": 0,
+      "min": 1.0,
+      "max": 4.0,
+      "mean": 1.6723166043811035
+    },
+    "days_since_active": {
+      "null_count": 0,
+      "min": 34,
+      "max": 274,
+      "mean": 142.72389
+    },
+    "recruiter_response_rate": {
+      "null_count": 0,
+      "min": 0.02,
+      "max": 0.95,
+      "mean": 0.4365736
+    },
+    "notice_period_days": {
+      "null_count": 0,
+      "min": 0,
+      "max": 150,
+      "mean": 87.3858
+    },
+    "github_activity_score": {
+      "null_count": 0,
+      "min": -1.0,
+      "max": 96.9,
+      "mean": 9.61923
+    },
+    "interview_completion_rate": {
+      "null_count": 0,
+      "min": 0.3,
+      "max": 1.0,
+      "mean": 0.6195099
+    },
+    "open_to_work_flag": {
+      "null_count": 0,
+      "unique_values": 2
+    },
+    "location": {
+      "null_count": 0,
+      "unique_values": 28
+    },
+    "honeypot_flag": {
+      "null_count": 0,
+      "unique_values": 2
+    },
+    "semantic_text": {
+      "null_count": 0,
+      "unique_values": 100000
+    }
+  }
+}

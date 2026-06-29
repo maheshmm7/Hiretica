@@ -1,0 +1,104 @@
+{
+  "candidate_id": {
+    "type": "string",
+    "nullable": false,
+    "description": "Unique ID",
+    "category": "Candidate Profile"
+  },
+  "years_of_experience": {
+    "type": "float",
+    "nullable": false,
+    "description": "Years of exp",
+    "category": "Candidate Profile"
+  },
+  "job_hopping_index": {
+    "type": "float",
+    "nullable": false,
+    "description": "Exp / total roles",
+    "category": "Career"
+  },
+  "production_ai_score": {
+    "type": "int",
+    "nullable": false,
+    "description": "Keywords in tech roles",
+    "category": "Career"
+  },
+  "research_ratio": {
+    "type": "float",
+    "nullable": false,
+    "description": "Research roles / total roles",
+    "category": "Career"
+  },
+  "core_skill_match_count": {
+    "type": "int",
+    "nullable": false,
+    "description": "JD core skills matched",
+    "category": "Skills"
+  },
+  "vector_db_experience": {
+    "type": "bool",
+    "nullable": false,
+    "description": "Has vector DB skills",
+    "category": "Skills"
+  },
+  "avg_skill_proficiency": {
+    "type": "float",
+    "nullable": false,
+    "description": "Average mapped prof",
+    "category": "Skills"
+  },
+  "days_since_active": {
+    "type": "int",
+    "nullable": false,
+    "description": "Days since last active",
+    "category": "Behavioral"
+  },
+  "recruiter_response_rate": {
+    "type": "float",
+    "nullable": false,
+    "description": "Response rate",
+    "category": "Behavioral"
+  },
+  "notice_period_days": {
+    "type": "int",
+    "nullable": false,
+    "description": "Notice period",
+    "category": "Behavioral"
+  },
+  "github_activity_score": {
+    "type": "float",
+    "nullable": false,
+    "description": "GitHub score",
+    "category": "Peer"
+  },
+  "interview_completion_rate": {
+    "type": "float",
+    "nullable": false,
+    "description": "Interview completion",
+    "category": "Behavioral"
+  },
+  "open_to_work_flag": {
+    "type": "bool",
+    "nullable": false,
+    "description": "Open to work",
+    "category": "Behavioral"
+  },
+  "location": {
+    "type": "string",
+    "nullable": false,
+    "description": "Location",
+    "category": "Candidate Profile"
+  },
+  "honeypot_flag": {
+    "type": "bool",
+    "nullable": false,
+    "description": "Detected honeypot anomalies",
+    "category": "Risk"
+  },
+  "semantic_text": {
+    "type": "string",
+    "nullable": false,
+    "description": "Combined text for embedding",
+    "category": "Semantic"
+  }
+}

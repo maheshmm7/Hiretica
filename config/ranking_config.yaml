@@ -1,0 +1,43 @@
+weights:
+  technical_fit: 0.35
+  career_progression: 0.25
+  behavior_intelligence: 0.20
+  # Peer validations are boosts added later
+
+dimensions:
+  technical:
+    semantic_similarity: 0.15
+    keyword_match: 0.10
+    production_ai_experience: 0.10
+  
+  career:
+    experience_relevance: 0.15
+    career_stability: 0.10
+    
+  behavior:
+    recruiter_engagement: 0.10
+    candidate_availability: 0.05
+    location_compatibility: 0.05
+
+boosts:
+  github_assessment: 0.05
+  recruiter_validation: 0.02
+
+penalties:
+  notice_period:
+    threshold_days: 60
+    multiplier_60_plus: 0.5
+    multiplier_90_plus: 0.1
+  inactivity:
+    threshold_days: 180
+    multiplier: 0.0
+  flake_risk:
+    min_completion_rate: 0.5
+    multiplier: 0.5
+  consulting_research_only:
+    multiplier: 0.7
+
+thresholds:
+  hard_filter_max_inactive_days: 180
+  min_job_hopping_index: 1.5
+  max_years_experience: 50

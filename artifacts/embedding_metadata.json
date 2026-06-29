@@ -1,0 +1,144 @@
+{
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_dimension": 384,
+  "normalization_method": "L2",
+  "batch_size": 256,
+  "runtime_seconds": 2524.23,
+  "peak_memory_mb": 2659.65,
+  "number_of_embeddings": 100000,
+  "checksum_md5": "ffabf93038d7cf1ab361e5acbd965ffc",
+  "generation_timestamp": "2026-06-29T07:17:17.744174",
+  "limitations": "Currently only supporting a single combined 'semantic_text' view. Future updates can extend this to semantic_profile, semantic_career, and semantic_skills.",
+  "verification_sample": [
+    {
+      "query_id": "CAND_0077394",
+      "query_text_snippet": "Content Writer Content Writer with 5.2+ years of experience driving outcomes in my domain. I have bu...",
+      "neighbors": [
+        {
+          "neighbor_id": "CAND_0054866",
+          "similarity": 0.984585165977478,
+          "neighbor_text_snippet": "Content Writer Content Writer with 4.7+ years of experience driving outcomes in my domain. I have bu..."
+        },
+        {
+          "neighbor_id": "CAND_0023030",
+          "similarity": 0.9822548031806946,
+          "neighbor_text_snippet": "Content Writer Content Writer with 5.8+ years of experience driving outcomes in my domain. I have bu..."
+        },
+        {
+          "neighbor_id": "CAND_0092641",
+          "similarity": 0.9815937280654907,
+          "neighbor_text_snippet": "Content Writer Content Writer with 14.9+ years of experience driving outcomes in my domain. I have b..."
+        },
+        {
+          "neighbor_id": "CAND_0000576",
+          "similarity": 0.9814222455024719,
+          "neighbor_text_snippet": "Content Writer Content Writer with 6.2+ years of experience driving outcomes in my domain. I have bu..."
+        }
+      ]
+    },
+    {
+      "query_id": "CAND_0043888",
+      "query_text_snippet": "HR Manager Professional with 12.2+ years of experience. My professional background is in marketing m...",
+      "neighbors": [
+        {
+          "neighbor_id": "CAND_0087581",
+          "similarity": 0.9738605618476868,
+          "neighbor_text_snippet": "HR Manager Professional with 12.2+ years of experience. My professional background is in marketing m..."
+        },
+        {
+          "neighbor_id": "CAND_0082827",
+          "similarity": 0.9668561220169067,
+          "neighbor_text_snippet": "HR Manager Professional with 11.4+ years of experience. My professional background is in marketing m..."
+        },
+        {
+          "neighbor_id": "CAND_0008845",
+          "similarity": 0.9664531946182251,
+          "neighbor_text_snippet": "HR Manager Professional with 11.2+ years of experience. My professional background is in marketing m..."
+        },
+        {
+          "neighbor_id": "CAND_0007727",
+          "similarity": 0.9657794237136841,
+          "neighbor_text_snippet": "HR Manager Professional with 7.1+ years of experience. My professional background is in marketing ma..."
+        }
+      ]
+    },
+    {
+      "query_id": "CAND_0065456",
+      "query_text_snippet": "Business Analyst Professional with 3.8+ years of experience. I'm a marketing manager with substantia...",
+      "neighbors": [
+        {
+          "neighbor_id": "CAND_0053410",
+          "similarity": 0.9735997319221497,
+          "neighbor_text_snippet": "Business Analyst Professional with 3.9+ years of experience. I'm a marketing manager with substantia..."
+        },
+        {
+          "neighbor_id": "CAND_0074181",
+          "similarity": 0.9727237224578857,
+          "neighbor_text_snippet": "Business Analyst Professional with 2.6+ years of experience. I'm a marketing manager with substantia..."
+        },
+        {
+          "neighbor_id": "CAND_0071132",
+          "similarity": 0.9722720384597778,
+          "neighbor_text_snippet": "Business Analyst Professional with 8.5+ years of experience. I'm a marketing manager with substantia..."
+        },
+        {
+          "neighbor_id": "CAND_0088993",
+          "similarity": 0.9717669486999512,
+          "neighbor_text_snippet": "Business Analyst Professional with 10.4+ years of experience. I'm a marketing manager with substanti..."
+        }
+      ]
+    },
+    {
+      "query_id": "CAND_0008925",
+      "query_text_snippet": "Business Analyst Professional with 11.1+ years of experience. I'm a marketing manager with substanti...",
+      "neighbors": [
+        {
+          "neighbor_id": "CAND_0058376",
+          "similarity": 0.9811627864837646,
+          "neighbor_text_snippet": "Business Analyst Professional with 9.5+ years of experience. I'm a marketing manager with substantia..."
+        },
+        {
+          "neighbor_id": "CAND_0002082",
+          "similarity": 0.9802976250648499,
+          "neighbor_text_snippet": "Business Analyst Professional with 3.4+ years of experience. I'm a marketing manager with substantia..."
+        },
+        {
+          "neighbor_id": "CAND_0026558",
+          "similarity": 0.980028510093689,
+          "neighbor_text_snippet": "Business Analyst Professional with 1.0+ years of experience. I'm a marketing manager with substantia..."
+        },
+        {
+          "neighbor_id": "CAND_0005874",
+          "similarity": 0.9795398116111755,
+          "neighbor_text_snippet": "Business Analyst Professional with 1.8+ years of experience. I'm a marketing manager with substantia..."
+        }
+      ]
+    },
+    {
+      "query_id": "CAND_0043302",
+      "query_text_snippet": "Software Engineer Software / data professional with 2.5 years of experience building data pipelines,...",
+      "neighbors": [
+        {
+          "neighbor_id": "CAND_0008198",
+          "similarity": 0.9691557884216309,
+          "neighbor_text_snippet": "Software Engineer Software / data professional with 3.6 years of experience building data pipelines,..."
+        },
+        {
+          "neighbor_id": "CAND_0057494",
+          "similarity": 0.9670804142951965,
+          "neighbor_text_snippet": "Software Engineer Software / data professional with 5.7 years of experience building data pipelines,..."
+        },
+        {
+          "neighbor_id": "CAND_0048368",
+          "similarity": 0.9662559032440186,
+          "neighbor_text_snippet": "Software Engineer Software / data professional with 6.1 years of experience building data pipelines,..."
+        },
+        {
+          "neighbor_id": "CAND_0024921",
+          "similarity": 0.9648987054824829,
+          "neighbor_text_snippet": "Data Engineer Software / data professional with 7.4 years of experience building data pipelines, bac..."
+        }
+      ]
+    }
+  ]
+}
