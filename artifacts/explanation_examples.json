@@ -1,0 +1,188 @@
+{
+  "top_10": [
+    {
+      "rank": 1,
+      "candidate_id": "CAND_0014909",
+      "score": 0.4794615569434485,
+      "reasoning": "Displays historical recruiter response rate is 76%., balanced by candidate is not currently marked as open to work. considerations."
+    },
+    {
+      "rank": 2,
+      "candidate_id": "CAND_0049771",
+      "score": 0.4656178414667791,
+      "reasoning": "Displays historical recruiter response rate is 81%., balanced by candidate is not currently marked as open to work. considerations."
+    },
+    {
+      "rank": 3,
+      "candidate_id": "CAND_0044091",
+      "score": 0.4618004717704882,
+      "reasoning": "Shows moderate technical alignment, supported by historical recruiter response rate is 40%.."
+    },
+    {
+      "rank": 4,
+      "candidate_id": "CAND_0033749",
+      "score": 0.45939716267037756,
+      "reasoning": "Displays historical recruiter response rate is 78%., balanced by candidate is not currently marked as open to work. considerations."
+    },
+    {
+      "rank": 5,
+      "candidate_id": "CAND_0065501",
+      "score": 0.45864079028587984,
+      "reasoning": "Displays historical recruiter response rate is 55%., balanced by candidate is not currently marked as open to work. considerations."
+    },
+    {
+      "rank": 6,
+      "candidate_id": "CAND_0087804",
+      "score": 0.44809999999999994,
+      "reasoning": "Displays historical recruiter response rate is 42%., balanced by candidate is not currently marked as open to work. considerations."
+    },
+    {
+      "rank": 7,
+      "candidate_id": "CAND_0065430",
+      "score": 0.44271954131078284,
+      "reasoning": "Displays historical recruiter response rate is 71%., balanced by candidate is not currently marked as open to work. considerations."
+    },
+    {
+      "rank": 8,
+      "candidate_id": "CAND_0018653",
+      "score": 0.4393164039266877,
+      "reasoning": "Displays historical recruiter response rate is 72%., balanced by candidate is not currently marked as open to work. considerations."
+    },
+    {
+      "rank": 9,
+      "candidate_id": "CAND_0047385",
+      "score": 0.4392410095183848,
+      "reasoning": "Displays historical recruiter response rate is 69%., balanced by candidate is not currently marked as open to work. considerations."
+    },
+    {
+      "rank": 10,
+      "candidate_id": "CAND_0072660",
+      "score": 0.43693702844100657,
+      "reasoning": "Displays historical recruiter response rate is 53%., balanced by candidate is not currently marked as open to work. considerations."
+    }
+  ],
+  "middle_50_60": [
+    {
+      "rank": 51,
+      "candidate_id": "CAND_0061175",
+      "score": 0.36751773269036614,
+      "reasoning": "Displays historical recruiter response rate is 48%., balanced by candidate is not currently marked as open to work. considerations."
+    },
+    {
+      "rank": 52,
+      "candidate_id": "CAND_0089381",
+      "score": 0.3663118179361371,
+      "reasoning": "Displays historical recruiter response rate is 81%., balanced by candidate is not currently marked as open to work. considerations."
+    },
+    {
+      "rank": 53,
+      "candidate_id": "CAND_0087316",
+      "score": 0.3618929064248666,
+      "reasoning": "Displays historical recruiter response rate is 80%., balanced by candidate is not currently marked as open to work. considerations."
+    },
+    {
+      "rank": 54,
+      "candidate_id": "CAND_0033350",
+      "score": 0.3615316195153685,
+      "reasoning": "Displays historical recruiter response rate is 85%., balanced by candidate is not currently marked as open to work. considerations."
+    },
+    {
+      "rank": 55,
+      "candidate_id": "CAND_0080465",
+      "score": 0.3614383382550993,
+      "reasoning": "Displays historical recruiter response rate is 83%., balanced by candidate is not currently marked as open to work. considerations."
+    },
+    {
+      "rank": 56,
+      "candidate_id": "CAND_0023587",
+      "score": 0.3607732599394239,
+      "reasoning": "Displays historical recruiter response rate is 90%., balanced by candidate is not currently marked as open to work. considerations."
+    },
+    {
+      "rank": 57,
+      "candidate_id": "CAND_0069220",
+      "score": 0.3597520610707431,
+      "reasoning": "Displays historical recruiter response rate is 50%., balanced by candidate is not currently marked as open to work. considerations."
+    },
+    {
+      "rank": 58,
+      "candidate_id": "CAND_0086154",
+      "score": 0.3596426647492016,
+      "reasoning": "Displays historical recruiter response rate is 90%., balanced by candidate is not currently marked as open to work. considerations."
+    },
+    {
+      "rank": 59,
+      "candidate_id": "CAND_0073007",
+      "score": 0.359587301231017,
+      "reasoning": "Displays historical recruiter response rate is 83%., balanced by candidate is not currently marked as open to work. considerations."
+    },
+    {
+      "rank": 60,
+      "candidate_id": "CAND_0072784",
+      "score": 0.3594030876237728,
+      "reasoning": "Displays historical recruiter response rate is 80%., balanced by candidate is not currently marked as open to work. considerations."
+    }
+  ],
+  "bottom_240_250": [
+    {
+      "rank": 241,
+      "candidate_id": "CAND_0022023",
+      "score": 0.24512236303064935,
+      "reasoning": "Displays historical recruiter response rate is 47%., balanced by candidate is not currently marked as open to work. considerations."
+    },
+    {
+      "rank": 242,
+      "candidate_id": "CAND_0075491",
+      "score": 0.24424500053654863,
+      "reasoning": "Displays historical recruiter response rate is 40%., balanced by candidate is not currently marked as open to work. considerations."
+    },
+    {
+      "rank": 243,
+      "candidate_id": "CAND_0084391",
+      "score": 0.24231448230113634,
+      "reasoning": "Displays historical recruiter response rate is 49%., balanced by candidate is not currently marked as open to work. considerations."
+    },
+    {
+      "rank": 244,
+      "candidate_id": "CAND_0016696",
+      "score": 0.24199236865234214,
+      "reasoning": "Displays historical recruiter response rate is 16%., balanced by candidate is not currently marked as open to work. considerations."
+    },
+    {
+      "rank": 245,
+      "candidate_id": "CAND_0040677",
+      "score": 0.24125027102203045,
+      "reasoning": "Displays historical recruiter response rate is 37%., balanced by candidate is not currently marked as open to work. considerations."
+    },
+    {
+      "rank": 246,
+      "candidate_id": "CAND_0095858",
+      "score": 0.24095006332758911,
+      "reasoning": "Displays historical recruiter response rate is 28%., balanced by candidate is not currently marked as open to work. considerations."
+    },
+    {
+      "rank": 247,
+      "candidate_id": "CAND_0011923",
+      "score": 0.23305607198514444,
+      "reasoning": "Displays historical recruiter response rate is 27%., balanced by candidate is not currently marked as open to work. considerations."
+    },
+    {
+      "rank": 248,
+      "candidate_id": "CAND_0099983",
+      "score": 0.22954207073975758,
+      "reasoning": "Displays historical recruiter response rate is 23%., balanced by candidate is not currently marked as open to work. considerations."
+    },
+    {
+      "rank": 249,
+      "candidate_id": "CAND_0046279",
+      "score": 0.22189496254446717,
+      "reasoning": "Displays historical recruiter response rate is 12%., balanced by candidate is not currently marked as open to work. considerations."
+    },
+    {
+      "rank": 250,
+      "candidate_id": "CAND_0020494",
+      "score": 0.22014005244437812,
+      "reasoning": "Displays historical recruiter response rate is 26%., balanced by candidate is not currently marked as open to work. considerations."
+    }
+  ]
+}
