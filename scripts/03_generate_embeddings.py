@@ -19,9 +19,9 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
-FEATURES_PARQUET = PROJECT_ROOT / "artifacts" / "candidate_features.parquet"
-OUTPUT_EMBEDDINGS = PROJECT_ROOT / "artifacts" / "candidate_embeddings.npy"
-OUTPUT_METADATA_PARQUET = PROJECT_ROOT / "artifacts" / "candidate_metadata.parquet"
+FEATURES_PARQUET = PROJECT_ROOT / "cache" / "candidate_features.parquet"
+OUTPUT_EMBEDDINGS = PROJECT_ROOT / "cache" / "candidate_embeddings.npy"
+OUTPUT_METADATA_PARQUET = PROJECT_ROOT / "cache" / "candidate_metadata.parquet"
 EMBEDDING_METADATA_JSON = PROJECT_ROOT / "artifacts" / "embedding_metadata.json"
 
 MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"

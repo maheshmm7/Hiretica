@@ -1,0 +1,90 @@
+{
+  "index_type": "IndexFlatIP",
+  "embedding_dimension": 384,
+  "vector_count": 100000,
+  "normalization_method": "L2",
+  "build_runtime_seconds": 0.3308136463165283,
+  "peak_memory_mb": 354.8203125,
+  "average_retrieval_latency_seconds": 0.012560208638509115,
+  "artifact_checksum_md5": "6a4b4a890033122dcd609268bc96c52a",
+  "verification_sample": [
+    {
+      "query_candidate_id": "CAND_0065458",
+      "latency_seconds": 0.013809680938720703,
+      "top_5_results": [
+        {
+          "neighbor_id": "CAND_0065458",
+          "similarity": 1.000000238418579
+        },
+        {
+          "neighbor_id": "CAND_0006708",
+          "similarity": 0.9755618572235107
+        },
+        {
+          "neighbor_id": "CAND_0079552",
+          "similarity": 0.9729766845703125
+        },
+        {
+          "neighbor_id": "CAND_0075622",
+          "similarity": 0.9726550579071045
+        },
+        {
+          "neighbor_id": "CAND_0069192",
+          "similarity": 0.9702115058898926
+        }
+      ]
+    },
+    {
+      "query_candidate_id": "CAND_0008925",
+      "latency_seconds": 0.009856462478637695,
+      "top_5_results": [
+        {
+          "neighbor_id": "CAND_0008925",
+          "similarity": 1.0
+        },
+        {
+          "neighbor_id": "CAND_0058376",
+          "similarity": 0.9811630249023438
+        },
+        {
+          "neighbor_id": "CAND_0002082",
+          "similarity": 0.9802975654602051
+        },
+        {
+          "neighbor_id": "CAND_0026558",
+          "similarity": 0.9800282716751099
+        },
+        {
+          "neighbor_id": "CAND_0005874",
+          "similarity": 0.9795399904251099
+        }
+      ]
+    },
+    {
+      "query_candidate_id": "CAND_0077395",
+      "latency_seconds": 0.014014482498168945,
+      "top_5_results": [
+        {
+          "neighbor_id": "CAND_0077395",
+          "similarity": 0.9999998807907104
+        },
+        {
+          "neighbor_id": "CAND_0022411",
+          "similarity": 0.9832416772842407
+        },
+        {
+          "neighbor_id": "CAND_0068732",
+          "similarity": 0.9795325994491577
+        },
+        {
+          "neighbor_id": "CAND_0053628",
+          "similarity": 0.9790153503417969
+        },
+        {
+          "neighbor_id": "CAND_0019692",
+          "similarity": 0.9789043664932251
+        }
+      ]
+    }
+  ]
+}

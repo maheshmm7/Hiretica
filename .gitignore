@@ -64,3 +64,6 @@ Thumbs.db
 
 # Logs
 *.log
+
+# Heavy runtime cache
+cache/

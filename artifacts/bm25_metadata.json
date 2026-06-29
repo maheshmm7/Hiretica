@@ -1,0 +1,54 @@
+{
+  "tokenizer_strategy": "whitespace_lowercase",
+  "vocabulary_size": 215,
+  "average_document_length": 21.06498,
+  "runtime_seconds": 7.340022563934326,
+  "peak_memory_mb": 227.8984375,
+  "generation_timestamp": "2026-06-29T07:51:37.800868",
+  "verification_sample": [
+    {
+      "query": "content writer",
+      "latency_seconds": 0.05772876739501953,
+      "top_5_candidates": [
+        "CAND_0025841",
+        "CAND_0006427",
+        "CAND_0006126",
+        "CAND_0021843",
+        "CAND_0094426"
+      ]
+    },
+    {
+      "query": "hr manager",
+      "latency_seconds": 0.047176361083984375,
+      "top_5_candidates": [
+        "CAND_0057712",
+        "CAND_0000685",
+        "CAND_0055923",
+        "CAND_0042581",
+        "CAND_0050795"
+      ]
+    },
+    {
+      "query": "data engineer python spark",
+      "latency_seconds": 0.08414387702941895,
+      "top_5_candidates": [
+        "CAND_0006572",
+        "CAND_0019984",
+        "CAND_0057666",
+        "CAND_0000390",
+        "CAND_0087239"
+      ]
+    },
+    {
+      "query": "software engineer java aws",
+      "latency_seconds": 0.0850522518157959,
+      "top_5_candidates": [
+        "CAND_0040648",
+        "CAND_0009896",
+        "CAND_0065796",
+        "CAND_0000740",
+        "CAND_0035743"
+      ]
+    }
+  ]
+}

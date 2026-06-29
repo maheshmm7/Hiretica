@@ -14,7 +14,7 @@ logger = logging.getLogger(__name__)
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 DATASET_PATH = PROJECT_ROOT / "dataset" / "candidates.jsonl"
-OUTPUT_PARQUET = PROJECT_ROOT / "artifacts" / "candidate_features.parquet"
+OUTPUT_PARQUET = PROJECT_ROOT / "cache" / "candidate_features.parquet"
 METADATA_JSON = PROJECT_ROOT / "artifacts" / "feature_metadata.json"
 STATS_JSON = PROJECT_ROOT / "artifacts" / "feature_statistics.json"
 
