@@ -1,0 +1,29 @@
+{
+  "health_response": {
+    "status": "ok",
+    "version": "1.0.0",
+    "components": {
+      "pipeline": "ready",
+      "faiss": "ready",
+      "bm25": "ready"
+    }
+  },
+  "metrics_response": {
+    "startup_time_ms": 9742.91729927063,
+    "is_ready": true
+  },
+  "rank_response_top_2": [
+    {
+      "candidate_id": "CAND_0087804",
+      "rank": 1,
+      "score": 0.44809999999999994,
+      "reasoning": "Displays historical recruiter response rate is 42%., balanced by candidate is not currently marked as open to work. considerations."
+    },
+    {
+      "candidate_id": "CAND_0072660",
+      "rank": 2,
+      "score": 0.3962482202720252,
+      "reasoning": "Displays historical recruiter response rate is 53%., balanced by candidate is not currently marked as open to work. considerations."
+    }
+  ]
+}
