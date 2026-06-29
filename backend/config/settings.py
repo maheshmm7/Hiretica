@@ -34,6 +34,26 @@ class ConfidenceThresholdsConfig(BaseModel):
     high: float
     medium: float
 
+class BehaviorWeightsConfig(BaseModel):
+    engagement: float
+    availability: float
+    profile_quality: float
+
+class ReadinessThresholdsConfig(BaseModel):
+    highly_ready: float
+    ready: float
+    passive: float
+
+class BehaviorConfig(BaseModel):
+    weights: BehaviorWeightsConfig
+    readiness_thresholds: ReadinessThresholdsConfig
+    critical_risk_cap: str
+
+class EnsembleConfig(BaseModel):
+    hybrid_retrieval: float
+    recruiter_score: float
+    behavior_score: float
+
 class WeightsConfig(BaseModel):
     technical_fit: float
     career_progression: float
@@ -95,6 +115,8 @@ class RankingConfig(BaseModel):
     intelligence: IntelligenceConfig
     risk_multipliers: RiskMultipliersConfig
     confidence_thresholds: ConfidenceThresholdsConfig
+    behavior: BehaviorConfig
+    ensemble: EnsembleConfig
     weights: WeightsConfig
     dimensions: DimensionsConfig
     boosts: BoostsConfig

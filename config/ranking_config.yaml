@@ -49,6 +49,22 @@ confidence_thresholds:
   high: 0.28
   medium: 0.20
 
+behavior:
+  weights:
+    engagement: 0.35
+    availability: 0.40
+    profile_quality: 0.25
+  readiness_thresholds:
+    highly_ready: 0.70
+    ready: 0.50
+    passive: 0.30
+  critical_risk_cap: "Ready"
+
+ensemble:
+  hybrid_retrieval: 0.20
+  recruiter_score: 0.50
+  behavior_score: 0.30
+
 boosts:
   github_assessment: 0.05
   recruiter_validation: 0.02
