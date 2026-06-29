@@ -28,6 +28,27 @@ dimensions:
     candidate_availability: 0.05
     location_compatibility: 0.05
 
+intelligence:
+  weights:
+    technical_fit: 0.35
+    experience_fit: 0.20
+    career_progression: 0.15
+    leadership: 0.10
+    domain_relevance: 0.10
+    career_stability: 0.05
+    growth_trend: 0.05
+
+risk_multipliers:
+  low: 1.00
+  medium: 0.92
+  high: 0.80
+  critical: 0.60
+
+confidence_thresholds:
+  exceptional: 0.35
+  high: 0.28
+  medium: 0.20
+
 boosts:
   github_assessment: 0.05
   recruiter_validation: 0.02

@@ -11,6 +11,29 @@ class FusionConfig(BaseModel):
     beta: float
     normalization: str
 
+class IntelligenceWeights(BaseModel):
+    technical_fit: float
+    experience_fit: float
+    career_progression: float
+    leadership: float
+    domain_relevance: float
+    career_stability: float
+    growth_trend: float
+
+class IntelligenceConfig(BaseModel):
+    weights: IntelligenceWeights
+
+class RiskMultipliersConfig(BaseModel):
+    low: float
+    medium: float
+    high: float
+    critical: float
+
+class ConfidenceThresholdsConfig(BaseModel):
+    exceptional: float
+    high: float
+    medium: float
+
 class WeightsConfig(BaseModel):
     technical_fit: float
     career_progression: float
@@ -69,6 +92,9 @@ class ThresholdsConfig(BaseModel):
 class RankingConfig(BaseModel):
     retrieval: RetrievalConfig
     fusion: FusionConfig
+    intelligence: IntelligenceConfig
+    risk_multipliers: RiskMultipliersConfig
+    confidence_thresholds: ConfidenceThresholdsConfig
     weights: WeightsConfig
     dimensions: DimensionsConfig
     boosts: BoostsConfig
