@@ -106,6 +106,31 @@ hiretica/
 
 ---
 
+## 🚀 Deployment (Render)
+
+To keep the GitHub repository lightweight, large ML artifacts (FAISS indexes, pre-computed embeddings) are **not** committed to version control. The backend is configured to dynamically download these artifacts upon startup in a production environment.
+
+### 1. Prepare the Cache Archive
+1. On your local machine where the app runs successfully, navigate to the `cache/` directory.
+2. Select all files *inside* the `cache/` directory (`bm25.pkl`, `faiss.index`, `*.parquet`, `*.npy`) and zip them into an archive named `cache.zip`. **Do not zip the `cache` folder itself**, just its contents.
+3. Upload `cache.zip` to a reliable storage provider (e.g., AWS S3, Google Cloud Storage, or a direct Dropbox link).
+4. Copy the direct download URL.
+
+### 2. Configure Render
+Create a new **Web Service** on Render and configure it exactly as follows:
+- **Environment:** `Python 3`
+- **Root Directory:** `backend`
+- **Build Command:** `pip install -r requirements.txt`
+- **Start Command:** `uvicorn main:app --host 0.0.0.0 --port 10000`
+
+### 3. Environment Variables
+Add the following Environment Variable in your Render dashboard:
+- `CACHE_ARCHIVE_URL`: Set this to the direct download URL of your `cache.zip` from Step 1.
+
+*Note: Render's Free tier limits RAM to 512MB. Because Hiretica loads transformer models and vector search indexes into memory, you will likely need to upgrade to a paid instance with at least 1GB–2GB of RAM to prevent Out-Of-Memory (OOM) crashes.*
+
+---
+
 ## 💻 Installation
 
 ### Prerequisites
