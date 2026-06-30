@@ -5,6 +5,12 @@
     <strong>Enterprise-Grade AI Recruiting Agent & Pipeline</strong>
   </p>
   <p align="center">
+    <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License: MIT"></a>
+    <a href="https://github.com/maheshmm7/Hiretica/pulls"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs Welcome"></a>
+    <img src="https://img.shields.io/badge/python-3.12-blue.svg" alt="Python">
+    <img src="https://img.shields.io/badge/Next.js-15-black?logo=next.js" alt="Next.js">
+  </p>
+  <p align="center">
     <a href="#overview">Overview</a> •
     <a href="#features">Features</a> •
     <a href="#architecture">Architecture</a> •
