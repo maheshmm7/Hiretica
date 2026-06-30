@@ -1,5 +1,6 @@
 from typing import List
-from pydantic import BaseModel, Field, ConfigDict
+
+from pydantic import BaseModel, ConfigDict, Field
 
 from ensemble.ensemble_models import RankedCandidate
 

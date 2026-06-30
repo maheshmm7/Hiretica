@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { 
   Activity, Search, Users, Database, BrainCircuit, 
-  Lightbulb, ShieldCheck, FileCheck, Download, Beaker
+  Lightbulb, ShieldCheck, FileCheck, Download, Beaker, Settings
 } from "lucide-react";
 
 const NAV_ITEMS = [
@@ -20,6 +20,7 @@ const NAV_ITEMS = [
   { name: "Final Shortlist", href: "/workspace/final-shortlist", icon: FileCheck },
   { name: "Export", href: "/workspace/export", icon: Download },
   { name: "Science", href: "/workspace/science", icon: Beaker },
+  { name: "Settings", href: "/workspace/settings", icon: Settings },
 ];
 
 export function Sidebar() {

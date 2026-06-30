@@ -19,6 +19,19 @@ class QueryParser:
             "to",
             "for",
             "of",
+            "engineer",
+            "developer",
+            "software",
+            "senior",
+            "junior",
+            "mid",
+            "level",
+            "role",
+            "job",
+            "team",
+            "work",
+            "years",
+            "experience",
         }
 
     def parse(self, job_id: str, raw_text: str) -> QueryContext:

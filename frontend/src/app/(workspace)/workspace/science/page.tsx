@@ -3,7 +3,7 @@
 import React from "react";
 import { PageHeader, SectionTitle } from "@/components/shared/typography";
 import { AnimatedContainer, GlassPanel } from "@/components/shared/containers";
-import { Beaker, Search, Database, BrainCircuit, Lightbulb, ShieldCheck } from "lucide-react";
+import {  Search, Database, BrainCircuit, Lightbulb, ShieldCheck } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
 export default function SciencePage() {
@@ -24,7 +24,7 @@ export default function SciencePage() {
           </div>
           <Badge variant="outline" className="mb-4">sentence-transformers/all-MiniLM-L6-v2</Badge>
           <p className="text-muted-foreground leading-relaxed text-sm">
-            We compute a 384-dimensional dense representation of a candidate's semantic career profile. This allows HIRETICA to understand that a "Frontend Developer with React" is semantically identical to a "UI Engineer with Next.js", entirely bypassing the brittle nature of traditional keyword matching.
+            We compute a 384-dimensional dense representation of a candidate&apos;s semantic career profile. This allows HIRETICA to understand that a &quot;Frontend Developer with React&quot; is semantically identical to a &quot;UI Engineer with Next.js&quot;, entirely bypassing the brittle nature of traditional keyword matching.
           </p>
           <div className="mt-4 p-4 rounded-lg bg-background/50 border border-border/50 text-xs font-mono text-muted-foreground">
             L2 Normalized inner product bounds: [-1, 1]
@@ -36,11 +36,11 @@ export default function SciencePage() {
             <div className="p-2 rounded bg-amber-500/10 text-amber-500">
               <Search className="w-5 h-5" />
             </div>
-            <h3 className="text-xl font-bold">BM25 Lexical Index</h3>
+            <h3 className="text-xl font-bold">Keyword Matching Engine</h3>
           </div>
-          <Badge variant="outline" className="mb-4 text-amber-500 border-amber-500/20">BM25Okapi Algorithm</Badge>
+          <Badge variant="outline" className="mb-4 text-amber-500 border-amber-500/20">Exact Match Algorithm</Badge>
           <p className="text-muted-foreground leading-relaxed text-sm">
-            Dense vectors often hallucinate or fail on specific technical acronyms (e.g. "AWS", "gRPC"). We run a parallel BM25 lexical inverted index specifically focused on extracting and hashing hard technical skills and certifications, guaranteeing exact-match resolution.
+            Contextual AI sometimes misses specific technical acronyms (e.g. &quot;AWS&quot;, &quot;gRPC&quot;). We run a parallel keyword index specifically focused on extracting and hashing hard technical skills and certifications, guaranteeing exact-match resolution.
           </p>
           <div className="mt-4 p-4 rounded-lg bg-background/50 border border-border/50 text-xs font-mono text-muted-foreground">
             Term Frequency-Inverse Document Frequency (TF-IDF) evolution
@@ -58,7 +58,7 @@ export default function SciencePage() {
               <h4 className="font-bold">Recruiter Intelligence</h4>
             </div>
             <p className="text-sm text-muted-foreground">
-              Applies hard filtering rules simulating a human recruiter. For example, penalizing candidates whose location doesn't match the requisition, or boosting candidates with continuous tenure over job-hoppers.
+              Applies hard filtering rules simulating a human recruiter. For example, penalizing candidates whose location doesn&apos;t match the requisition, or boosting candidates with continuous tenure over job-hoppers.
             </p>
           </GlassPanel>
 
@@ -78,7 +78,7 @@ export default function SciencePage() {
               <h4 className="font-bold">Explainability Layer</h4>
             </div>
             <p className="text-sm text-muted-foreground">
-              Every score modifier is tracked with a deterministic rationale (e.g. "+5% (Tenure &gt; 4 years)"). This prevents the "black box" AI problem, allowing recruiters to justify every ranking decision.
+              Every score modifier is tracked with a deterministic rationale (e.g. &quot;+5% (Tenure &gt; 4 years)&quot;). This prevents the &quot;black box&quot; AI problem, allowing recruiters to justify every ranking decision.
             </p>
           </GlassPanel>
         </div>

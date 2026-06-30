@@ -1,13 +1,13 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import { m, LazyMotion, domAnimation } from "framer-motion";
 import { mockPipelineNodes } from "@/lib/mock/pipeline";
 import { cn } from "@/lib/utils";
 import { CheckCircle2, Circle, Loader2 } from "lucide-react";
 import { GlassPanel } from "../shared/containers";
 
-export function PipelineVisualizer() {
+export function PipelineVisualizer({ activeStage = -1 }: { activeStage?: number }) {
   return (
     <GlassPanel className="p-8">
       <div className="flex flex-col md:flex-row items-center justify-between mb-8">
@@ -15,10 +15,20 @@ export function PipelineVisualizer() {
           <h3 className="text-xl font-semibold">AI Execution Pipeline</h3>
           <p className="text-sm text-muted-foreground mt-1">Live status of the scoring engine</p>
         </div>
-        <div className="flex items-center gap-4 text-sm mt-4 md:mt-0">
-          <div className="flex items-center gap-1.5"><CheckCircle2 className="w-4 h-4 text-emerald-500" /> Complete</div>
-          <div className="flex items-center gap-1.5"><Loader2 className="w-4 h-4 text-blue-500 animate-spin" /> Processing</div>
-          <div className="flex items-center gap-1.5"><Circle className="w-4 h-4 text-muted-foreground" /> Pending</div>
+        <div className="flex items-center gap-4 text-sm mt-4 md:mt-0 bg-muted/30 px-3 py-1.5 rounded-md border">
+          {activeStage === 10 ? (
+            <div className="flex items-center gap-1.5 text-emerald-500 font-medium">
+              <CheckCircle2 className="w-4 h-4" /> Pipeline Fully Completed
+            </div>
+          ) : activeStage >= 0 ? (
+            <div className="flex items-center gap-1.5 text-blue-500 font-medium">
+              <Loader2 className="w-4 h-4 animate-spin" /> Processing ({activeStage + 1}/10)
+            </div>
+          ) : (
+            <div className="flex items-center gap-1.5 text-muted-foreground font-medium">
+              <Circle className="w-4 h-4" /> Ready to Start
+            </div>
+          )}
         </div>
       </div>
 
@@ -28,13 +38,13 @@ export function PipelineVisualizer() {
         
         <div className="space-y-6 relative z-10">
           {mockPipelineNodes.map((node, i) => {
-            const isComplete = node.status === "complete";
-            const isProcessing = node.status === "processing";
-            const isPending = node.status === "pending";
+            const isComplete = activeStage > i || activeStage === 10; // 10 means fully complete
+            const isProcessing = activeStage === i;
+            const isPending = activeStage < i;
 
             return (
-              <motion.div 
-                key={node.id}
+              <LazyMotion features={domAnimation} key={node.id}>
+              <m.div 
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: i * 0.1, duration: 0.5 }}
@@ -60,7 +70,8 @@ export function PipelineVisualizer() {
                   </h4>
                   <p className="text-sm text-muted-foreground mt-1">{node.description}</p>
                 </div>
-              </motion.div>
+              </m.div>
+              </LazyMotion>
             );
           })}
         </div>

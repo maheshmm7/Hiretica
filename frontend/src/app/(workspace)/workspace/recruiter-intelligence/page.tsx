@@ -4,15 +4,19 @@ import React from "react";
 import { PageHeader } from "@/components/shared/typography";
 import { AnimatedContainer, GlassPanel } from "@/components/shared/containers";
 import { AIStatus } from "@/components/shared/status";
-import { EmptyState } from "@/components/shared/states";
-import { BrainCircuit, FileWarning, ArrowRight, TrendingUp } from "lucide-react";
+
+import {  FileWarning, ArrowRight, TrendingUp } from "lucide-react";
 import { useAppStore } from "@/lib/store";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from "recharts";
+import dynamic from "next/dynamic";
+
+const GenericBarChart = dynamic(() => import("@/components/charts/generic-bar-chart"), { ssr: false });
 
 export default function RecruiterIntelligencePage() {
   const workspace = useAppStore(state => state.workspace);
+  const selectedCandidate = useAppStore(state => state.selectedCandidate);
+  const setSelectedCandidate = useAppStore(state => state.setSelectedCandidate);
 
   if (!workspace) {
     return (
@@ -38,14 +42,14 @@ export default function RecruiterIntelligencePage() {
     count: value
   }));
 
-  const candidates = workspace.candidates.sort((a, b) => b.recruiter_score - a.recruiter_score);
+  const candidates = workspace.candidates.toSorted((a, b) => b.recruiter_score - a.recruiter_score);
 
   return (
     <div className="space-y-8">
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <PageHeader 
           title="Recruiter Intelligence" 
-          description="Applying hard rules, domain heuristics, and tiering logic."
+          description="Applying domain expertise, evaluation rules, and tiering logic."
         />
         <AIStatus status="complete" className="mb-8 bg-purple-500/10 border border-purple-500/20 px-3 py-1.5 rounded-full" />
       </div>
@@ -54,18 +58,7 @@ export default function RecruiterIntelligencePage() {
         <GlassPanel className="p-6">
           <h3 className="text-lg font-bold mb-4 flex items-center gap-2"><TrendingUp className="w-5 h-5 text-purple-500" /> Score Distribution</h3>
           <div className="h-64">
-            <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={chartData}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#333" vertical={false} />
-                <XAxis dataKey="name" stroke="#888" fontSize={12} tickLine={false} axisLine={false} />
-                <YAxis stroke="#888" fontSize={12} tickLine={false} axisLine={false} />
-                <Tooltip 
-                  cursor={{fill: 'rgba(255,255,255,0.05)'}}
-                  contentStyle={{backgroundColor: '#111', borderColor: '#333', borderRadius: '8px'}}
-                />
-                <Bar dataKey="count" fill="#a855f7" radius={[4, 4, 0, 0]} />
-              </BarChart>
-            </ResponsiveContainer>
+            <GenericBarChart data={chartData} color="#a855f7" />
           </div>
         </GlassPanel>
 
@@ -73,13 +66,18 @@ export default function RecruiterIntelligencePage() {
           <h3 className="text-lg font-bold mb-4">Top Recruiter Matches</h3>
           <div className="space-y-4">
             {candidates.slice(0, 5).map(candidate => (
-              <div key={candidate.candidate_id} className="flex items-center justify-between p-3 rounded-lg bg-muted/30 border border-border/50">
+              <button 
+                type="button"
+                key={candidate.candidate_id} 
+                className={`w-full flex items-center justify-between p-3 rounded-lg border transition-colors cursor-pointer ${selectedCandidate === candidate.candidate_id ? 'bg-purple-500/10 border-purple-500/50' : 'bg-muted/30 border-border/50 hover:border-purple-500/30'}`}
+                onClick={() => setSelectedCandidate(candidate.candidate_id)}
+              >
                 <div className="font-medium">{candidate.candidate_id}</div>
                 <div className="flex items-center gap-4">
                   <div className="text-sm text-muted-foreground">Recruiter Score</div>
                   <div className="font-bold text-purple-500">{(candidate.recruiter_score * 100).toFixed(1)}</div>
                 </div>
-              </div>
+              </button>
             ))}
           </div>
         </GlassPanel>

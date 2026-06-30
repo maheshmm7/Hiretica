@@ -1,10 +1,12 @@
 from typing import Dict, Tuple
 
-from config.settings import IntelligenceWeights, ConfidenceThresholdsConfig
+from config.settings import ConfidenceThresholdsConfig, IntelligenceWeights
 
 
 class ScoreBlender:
-    def __init__(self, weights: IntelligenceWeights, thresholds: ConfidenceThresholdsConfig):
+    def __init__(
+        self, weights: IntelligenceWeights, thresholds: ConfidenceThresholdsConfig
+    ):
         self.weights = weights
         self.thresholds = thresholds
 

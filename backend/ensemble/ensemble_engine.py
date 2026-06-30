@@ -1,4 +1,4 @@
-from typing import List
+from typing import Dict, List, Optional
 
 from behavior.behavior_models import BehaviorCandidate
 from config.settings import settings
@@ -8,12 +8,19 @@ from .ensemble_scorer import EnsembleScorer
 
 
 class FinalEnsembleEngine:
-    def __init__(self, hybrid_scores: dict):
+    def __init__(
+        self,
+        hybrid_scores: dict,
+        faiss_scores: Optional[dict] = None,
+        bm25_scores: Optional[dict] = None,
+    ):
         self.scorer = EnsembleScorer(settings.ensemble)
         # hybrid_scores is a dict mapping candidate_id to hybrid_score
         # because the BehaviorCandidate doesn't carry hybrid_score natively
         # unless we explicitly pull it from the metadata.
         self.hybrid_scores = hybrid_scores
+        self.faiss_scores = faiss_scores or {}
+        self.bm25_scores = bm25_scores or {}
 
     def evaluate(
         self, behavior_candidates: List[BehaviorCandidate]
@@ -22,6 +29,8 @@ class FinalEnsembleEngine:
 
         for bc in behavior_candidates:
             hybrid_score = self.hybrid_scores.get(bc.candidate_id, 0.0)
+            faiss_score = self.faiss_scores.get(bc.candidate_id, 0.0)
+            bm25_score = self.bm25_scores.get(bc.candidate_id, 0.0)
 
             final_score, breakdown = self.scorer.blend(
                 hybrid_score=hybrid_score,
@@ -30,14 +39,13 @@ class FinalEnsembleEngine:
             )
 
             # Aggregate evidence
-            # In a real system, we'd also pull recruiter evidence,
-            # but we have behavior_evidence
-            # We can just use the behavior evidence for now.
-            evidence_summary = bc.behavior_evidence
+            evidence_summary = bc.recruiter_evidence + bc.behavior_evidence
 
             rc = RankedCandidate(
                 candidate_id=bc.candidate_id,
                 hybrid_score=hybrid_score,
+                faiss_score=faiss_score,
+                bm25_score=bm25_score,
                 recruiter_score=bc.recruiter_score,
                 behavior_score=bc.behavior_score,
                 final_hiretica_score=final_score,

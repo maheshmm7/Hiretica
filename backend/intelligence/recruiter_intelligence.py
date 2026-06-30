@@ -32,7 +32,9 @@ class RecruiterIntelligenceEngine:
         )
         self.leadership_analyzer = LeadershipAnalyzer()
         self.risk_engine = RiskEngine(settings.risk_multipliers)
-        self.blender = ScoreBlender(settings.intelligence.weights, settings.confidence_thresholds)
+        self.blender = ScoreBlender(
+            settings.intelligence.weights, settings.confidence_thresholds
+        )
 
     def evaluate(
         self, retrieved_candidates: List[RetrievedCandidate]

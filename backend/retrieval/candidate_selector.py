@@ -31,7 +31,10 @@ class CandidateSelector:
         )
 
     def retrieve(
-        self, job_id: str, job_description: str, metrics_tracker: Optional[MetricsTracker] = None
+        self,
+        job_id: str,
+        job_description: str,
+        metrics_tracker: Optional[MetricsTracker] = None,
     ) -> List[RetrievedCandidate]:
         """
         Executes the full retrieval pipeline.

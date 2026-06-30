@@ -6,7 +6,7 @@ from config.settings import settings
 from intelligence.recruiter_models import RecruiterCandidate
 
 from .availability import AvailabilityAnalyzer
-from .behavior_models import BehaviorCandidate
+from .behavior_models import BehaviorCandidate, BehaviorEvidence
 from .behavior_scoring import BehaviorScorer
 from .engagement import EngagementAnalyzer
 from .hiring_readiness import HiringReadinessMapper
@@ -64,6 +64,19 @@ class BehaviorIntelligenceEngine:
             # Use behavior score as confidence
             behavior_confidence = behavior_score
 
+            # Convert recruiter evidence dicts to BehaviorEvidence objects
+            converted_rec_ev = []
+            for ev_dict in rec.evidence:
+                impact = float(ev_dict.get("value", 0.0))
+                # Normalize impact for explainability sorting (if value is 0-1, maybe leave as is)
+                converted_rec_ev.append(
+                    BehaviorEvidence(
+                        module=ev_dict.get("dimension", "recruiter"),
+                        reason=ev_dict.get("reason", "Unknown"),
+                        impact=impact,
+                    )
+                )
+
             bc = BehaviorCandidate(
                 candidate_id=cid,
                 recruiter_score=rec.recruiter_score,
@@ -75,6 +88,7 @@ class BehaviorIntelligenceEngine:
                 behavior_confidence=behavior_confidence,
                 hiring_readiness=readiness,
                 behavior_breakdown=breakdown,
+                recruiter_evidence=converted_rec_ev,
                 behavior_evidence=all_evidence,
                 behavior_flags=all_flags,
             )

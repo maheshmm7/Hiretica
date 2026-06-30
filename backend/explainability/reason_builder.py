@@ -27,11 +27,15 @@ class ReasonBuilder:
             has_negative=has_neg,
         )
 
+        # Seed based on scores for deterministic variance
+        seed = tech_score + behavior_score
+
         # 2. Render initial string
         reasoning = self.template_engine.render(
             template_id=template_id,
             pos_factors=positive_factors,
             neg_factors=negative_factors,
+            seed=seed,
         )
 
         # 3. Enforce maximum length constraint
@@ -40,7 +44,10 @@ class ReasonBuilder:
             # Fallback to the simplest possible explanation
             template_id = "default_positive"
             reasoning = self.template_engine.render(
-                template_id=template_id, pos_factors=positive_factors, neg_factors=[]
+                template_id=template_id,
+                pos_factors=positive_factors,
+                neg_factors=[],
+                seed=seed,
             )
 
             # If STILL too long, truncate with ellipsis

@@ -1,12 +1,13 @@
 from fastapi import APIRouter, Depends, HTTPException
 
+from core.job_parser import JobParser
 from core.pipeline import AIPipeline
 
 from .dependencies import get_pipeline
 from .exceptions import PipelineError
-from .schemas import (ExplainRequest, ExplainResponse, HealthResponse,
-                      MetricsResponse, RankRequest, RankResponse,
-                      WorkspaceResponse)
+from .schemas import (AnalyzeJobResponse, ExplainRequest, ExplainResponse,
+                      HealthResponse, MetricsResponse, RankRequest,
+                      RankResponse, WorkspaceResponse)
 
 router = APIRouter()
 system_router = APIRouter()
@@ -60,11 +61,22 @@ def rank_candidates(request: RankRequest, pipeline: AIPipeline = Depends(get_pip
         raise PipelineError(f"Pipeline failed: {str(e)}", status_code=500)
 
 
+@router.post("/analyze-job", response_model=AnalyzeJobResponse, tags=["Workspace"])
+def analyze_job(request: RankRequest):
+    if not request.job_description.strip():
+        raise HTTPException(status_code=400, detail="Job description cannot be empty.")
+    try:
+        parsed_data = JobParser.parse(request.job_description)
+        return AnalyzeJobResponse(**parsed_data)
+    except Exception as e:
+        raise PipelineError(f"Analyze job failed: {str(e)}", status_code=500)
+
+
 @router.post("/workspace", response_model=WorkspaceResponse, tags=["Workspace"])
 def run_workspace(request: RankRequest, pipeline: AIPipeline = Depends(get_pipeline)):
     if not request.job_description.strip():
         raise HTTPException(status_code=400, detail="Job description cannot be empty.")
-        
+
     try:
         response_dict = pipeline.run_workspace(request.job_id, request.job_description)
         return WorkspaceResponse(**response_dict)

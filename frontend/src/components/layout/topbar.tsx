@@ -6,6 +6,13 @@ import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
 import { Sun, Moon, Bell } from "lucide-react";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator, BreadcrumbLink } from "@/components/ui/breadcrumb";
+import { toast } from "sonner";
+
+const handleNotificationsClick = () => {
+  toast.info("No new notifications", {
+    description: "You're all caught up on pipeline events."
+  });
+};
 
 export function Topbar() {
   const { setTheme, theme } = useTheme();
@@ -14,6 +21,8 @@ export function Topbar() {
   const segments = pathname.split('/').filter(Boolean);
   const currentSegment = segments[segments.length - 1] || '';
   const title = currentSegment.split('-').map(s => s.charAt(0).toUpperCase() + s.slice(1)).join(' ');
+
+
 
   return (
     <header className="h-16 flex items-center justify-between px-6 border-b border-border bg-background/80 backdrop-blur-md sticky top-0 z-30">
@@ -32,7 +41,7 @@ export function Topbar() {
       </div>
 
       <div className="flex items-center gap-2">
-        <Button variant="ghost" size="icon" className="text-muted-foreground">
+        <Button variant="ghost" size="icon" className="text-muted-foreground" onClick={handleNotificationsClick}>
           <Bell className="w-4 h-4" />
         </Button>
         <Button 

@@ -38,8 +38,14 @@ class HybridRetriever:
         if stdev_v == 0:
             return {k: 1.0 for k in scores}
 
-        # Z-score normalization
-        return {k: (v - mean_v) / stdev_v for k, v in scores.items()}
+        # Z-score normalization with clipping to prevent generic term explosion
+        # BM25 scores for generic terms have tiny variance, causing extreme z-scores.
+        # Clipping at [-3.0, 3.0] keeps them bounded like the FAISS scores.
+        result = {}
+        for k, v in scores.items():
+            z = (v - mean_v) / stdev_v
+            result[k] = max(-3.0, min(3.0, z))
+        return result
 
     def normalize(self, scores: Dict[str, float]) -> Dict[str, float]:
         if self.normalization == "minmax":
@@ -58,8 +64,13 @@ class HybridRetriever:
         """
         Fuses FAISS and BM25 scores. Deduplicates candidates and calculates the final hybrid score.
         """
+        import math
+
         norm_faiss = self.normalize(faiss_scores)
-        norm_bm25 = self.normalize(bm25_scores)
+
+        # Apply log smoothing to BM25 before normalization to prevent generic term explosion
+        smoothed_bm25 = {k: math.log1p(v) for k, v in bm25_scores.items()}
+        norm_bm25 = self.normalize(smoothed_bm25)
 
         candidates_map: Dict[str, RetrievedCandidate] = {}
 

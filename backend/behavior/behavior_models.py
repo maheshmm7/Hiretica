@@ -29,6 +29,7 @@ class BehaviorCandidate(BaseModel):
 
     # Diagnostics
     behavior_breakdown: Dict[str, float] = Field(default_factory=dict)
+    recruiter_evidence: List[BehaviorEvidence] = Field(default_factory=list)
     behavior_evidence: List[BehaviorEvidence] = Field(default_factory=list)
     behavior_flags: List[str] = Field(default_factory=list)
 

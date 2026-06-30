@@ -9,6 +9,8 @@ class RankedCandidate(BaseModel):
     candidate_id: str
 
     hybrid_score: float
+    faiss_score: float = 0.0
+    bm25_score: float = 0.0
     recruiter_score: float
     behavior_score: float
 

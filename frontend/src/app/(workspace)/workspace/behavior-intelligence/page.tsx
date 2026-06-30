@@ -4,14 +4,18 @@ import React from "react";
 import { PageHeader } from "@/components/shared/typography";
 import { AnimatedContainer, GlassPanel } from "@/components/shared/containers";
 import { AIStatus } from "@/components/shared/status";
-import { Lightbulb, FileWarning, ArrowRight, TrendingUp } from "lucide-react";
+import {  FileWarning, ArrowRight, TrendingUp } from "lucide-react";
 import { useAppStore } from "@/lib/store";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from "recharts";
+import dynamic from "next/dynamic";
+
+const GenericBarChart = dynamic(() => import("@/components/charts/generic-bar-chart"), { ssr: false });
 
 export default function BehaviorIntelligencePage() {
   const workspace = useAppStore(state => state.workspace);
+  const selectedCandidate = useAppStore(state => state.selectedCandidate);
+  const setSelectedCandidate = useAppStore(state => state.setSelectedCandidate);
 
   if (!workspace) {
     return (
@@ -37,7 +41,7 @@ export default function BehaviorIntelligencePage() {
     count: value
   }));
 
-  const candidates = workspace.candidates.sort((a, b) => b.behavior_score - a.behavior_score);
+  const candidates = workspace.candidates.toSorted((a, b) => b.behavior_score - a.behavior_score);
 
   return (
     <div className="space-y-8">
@@ -53,18 +57,7 @@ export default function BehaviorIntelligencePage() {
         <GlassPanel className="p-6">
           <h3 className="text-lg font-bold mb-4 flex items-center gap-2"><TrendingUp className="w-5 h-5 text-amber-500" /> Behavior Score Distribution</h3>
           <div className="h-64">
-            <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={chartData}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#333" vertical={false} />
-                <XAxis dataKey="name" stroke="#888" fontSize={12} tickLine={false} axisLine={false} />
-                <YAxis stroke="#888" fontSize={12} tickLine={false} axisLine={false} />
-                <Tooltip 
-                  cursor={{fill: 'rgba(255,255,255,0.05)'}}
-                  contentStyle={{backgroundColor: '#111', borderColor: '#333', borderRadius: '8px'}}
-                />
-                <Bar dataKey="count" fill="#f59e0b" radius={[4, 4, 0, 0]} />
-              </BarChart>
-            </ResponsiveContainer>
+            <GenericBarChart data={chartData} color="#f59e0b" />
           </div>
         </GlassPanel>
 
@@ -72,13 +65,18 @@ export default function BehaviorIntelligencePage() {
           <h3 className="text-lg font-bold mb-4">Top Behavior Matches</h3>
           <div className="space-y-4">
             {candidates.slice(0, 5).map(candidate => (
-              <div key={candidate.candidate_id} className="flex items-center justify-between p-3 rounded-lg bg-muted/30 border border-border/50">
+              <button 
+                type="button"
+                key={candidate.candidate_id} 
+                className={`w-full flex items-center justify-between p-3 rounded-lg border transition-colors cursor-pointer ${selectedCandidate === candidate.candidate_id ? 'bg-amber-500/10 border-amber-500/50' : 'bg-muted/30 border-border/50 hover:border-amber-500/30'}`}
+                onClick={() => setSelectedCandidate(candidate.candidate_id)}
+              >
                 <div className="font-medium">{candidate.candidate_id}</div>
                 <div className="flex items-center gap-4">
                   <div className="text-sm text-muted-foreground">Behavior Score</div>
                   <div className="font-bold text-amber-500">{(candidate.behavior_score * 100).toFixed(1)}</div>
                 </div>
-              </div>
+              </button>
             ))}
           </div>
         </GlassPanel>

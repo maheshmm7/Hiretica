@@ -9,21 +9,21 @@
     }
   },
   "metrics_response": {
-    "startup_time_ms": 9742.91729927063,
+    "startup_time_ms": 9801.376581192017,
     "is_ready": true
   },
   "rank_response_top_2": [
     {
-      "candidate_id": "CAND_0087804",
+      "candidate_id": "CAND_0065501",
       "rank": 1,
-      "score": 0.44809999999999994,
-      "reasoning": "Displays historical recruiter response rate is 42%., balanced by candidate is not currently marked as open to work. considerations."
+      "score": 0.8087224249634024,
+      "reasoning": "Exhibits a balanced technical foundation alongside semantic faiss matching score of 1.00 against the jd."
     },
     {
-      "candidate_id": "CAND_0072660",
+      "candidate_id": "CAND_0014909",
       "rank": 2,
-      "score": 0.3962482202720252,
-      "reasoning": "Displays historical recruiter response rate is 53%., balanced by candidate is not currently marked as open to work. considerations."
+      "score": 0.8009464192593785,
+      "reasoning": "A solid technical baseline, further enhanced by semantic faiss matching score of 1.00 against the jd."
     }
   ]
 }

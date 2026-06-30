@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, BrainCircuit, Database, Cpu, Activity, Zap } from "lucide-react";
+import { ArrowRight, BrainCircuit, Database, Activity, Zap } from "lucide-react";
 import { AnimatedContainer, GlassPanel } from "@/components/shared/containers";
 
 export default function LandingPage() {
@@ -21,7 +21,7 @@ export default function LandingPage() {
           </div>
           <span className="font-bold text-xl tracking-tight">HIRETICA</span>
         </div>
-        <Link href="/workspace/mission-control">
+        <Link href="/workspace/job-understanding">
           <Button variant="secondary" className="gap-2 font-medium bg-background/50 backdrop-blur-sm border border-border/50">
             Workspace <ArrowRight className="w-4 h-4" />
           </Button>
@@ -44,11 +44,11 @@ export default function LandingPage() {
           </h1>
           
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Hiretica fuses Dense Retrieval, BM25 Lexical Scoring, and Redrob Behavioral Signals to rank candidates exactly how a senior technical recruiter would.
+            Hiretica fuses Contextual AI, Precise Keyword Scoring, and Redrob Behavioral Signals to rank candidates exactly how a senior technical recruiter would.
           </p>
 
           <div className="flex items-center justify-center gap-4 pt-4">
-            <Link href="/workspace/mission-control">
+            <Link href="/workspace/job-understanding">
               <Button size="lg" className="h-12 px-8 text-base font-medium rounded-full shadow-lg shadow-primary/25">
                 Launch Workspace <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
@@ -64,7 +64,7 @@ export default function LandingPage() {
             </div>
             <h3 className="text-xl font-semibold mb-3">Hybrid Retrieval</h3>
             <p className="text-muted-foreground leading-relaxed">
-              Fusing FAISS dense vectors with BM25 lexical indexing to guarantee exact skill matching alongside semantic context.
+              Combining deep contextual understanding with exact keyword matching to guarantee skill matching alongside contextual meaning.
             </p>
           </GlassPanel>
 

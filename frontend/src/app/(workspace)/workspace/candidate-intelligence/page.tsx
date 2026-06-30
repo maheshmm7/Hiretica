@@ -3,9 +3,9 @@
 import React from "react";
 import { PageHeader } from "@/components/shared/typography";
 import { AnimatedContainer, GlassPanel } from "@/components/shared/containers";
-import { mockCandidates } from "@/lib/mock/candidates";
+
 import { Badge } from "@/components/ui/badge";
-import { Search, MapPin, Briefcase, FileWarning, ArrowRight } from "lucide-react";
+import { Search,   FileWarning, ArrowRight } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { useAppStore } from "@/lib/store";
 import { Button } from "@/components/ui/button";
@@ -71,7 +71,7 @@ export default function CandidateIntelligencePage() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {candidates.slice(0, 50).map((candidate, i) => (
+          {candidates.slice(0, 50).map((candidate) => (
             <GlassPanel key={candidate.candidate_id} className="p-6 hover:border-primary/20 transition-colors cursor-pointer group">
               <div className="flex items-start justify-between mb-4">
                 <div>

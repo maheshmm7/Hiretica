@@ -75,7 +75,7 @@ export default function ExportPage() {
           
           <div className="bg-muted/50 p-4 rounded-lg border border-border w-full text-left text-sm font-mono text-muted-foreground">
             candidate_id,rank,score,reasoning<br/>
-            {workspace.submission_preview[0].candidate_id},1,{workspace.submission_preview[0].score},"..."
+            {workspace.submission_preview[0].candidate_id},1,{workspace.submission_preview[0].score},&quot;...&quot;
           </div>
 
           <Button size="lg" className="w-full gap-2" onClick={handleExport}>

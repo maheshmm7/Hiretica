@@ -1,4 +1,4 @@
-from typing import Dict, List, Any
+from typing import Any, Dict, List
 
 from pydantic import BaseModel, Field
 
@@ -24,6 +24,17 @@ class RankResponse(BaseModel):
     candidates: List[SubmissionCandidate]
 
 
+class AnalyzeJobResponse(BaseModel):
+    role: str
+    summary: str
+    core_skills: List[str]
+    nice_to_have: List[str]
+    required_experience: str
+    keywords: List[str]
+    confidence_score: float
+    validation_warning: str | None = None
+
+
 class ExplainResponse(BaseModel):
     candidates: List[ExplainedCandidate]
 
@@ -43,14 +54,16 @@ class WorkspaceCandidate(BaseModel):
     candidate_id: str
     overall_rank: int
     final_score: float
-    
+
     hybrid_score: float
+    faiss_score: float
+    bm25_score: float
     recruiter_score: float
     behavior_score: float
-    
+
     ranking_breakdown: Dict[str, float]
     evidence_summary: List[Any]
-    
+
     reasoning: str
     positive_factors: List[str]
     negative_factors: List[str]

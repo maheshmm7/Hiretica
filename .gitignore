@@ -22,15 +22,20 @@ wheels/
 *.egg
 .pytest_cache/
 .mypy_cache/
+ruff_cache/
+.cache/
 .tox/
 
 # Virtual Environments
 venv/
+.venv/
 backend/venv/
 ENV/
 
 # Node / Frontend
+node_modules/
 frontend/node_modules/
+.next/
 frontend/.next/
 frontend/out/
 frontend/build/
@@ -47,15 +52,16 @@ Thumbs.db
 
 # IDEs
 .vscode/
+.vscode/settings.json
 .idea/
 *.swp
+*.bak
+*.tmp
 
 # Environment variables
 .env
 .env.local
-.env.development.local
-.env.test.local
-.env.production.local
+.env.*
 
 # Large datasets and generated artifacts
 *.parquet
@@ -67,3 +73,12 @@ Thumbs.db
 
 # Heavy runtime cache
 cache/
+
+# QA and Temporary Files
+playwright-report/
+test-results/
+reports/
+artifacts/
+response.json
+qa_backend_workspace.json
+verify_ui.py

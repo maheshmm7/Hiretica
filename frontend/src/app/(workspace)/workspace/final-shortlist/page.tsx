@@ -2,16 +2,18 @@
 
 import React from "react";
 import { PageHeader } from "@/components/shared/typography";
-import { AnimatedContainer, GlassPanel } from "@/components/shared/containers";
+import { AnimatedContainer } from "@/components/shared/containers";
 import { AIStatus } from "@/components/shared/status";
-import { FileCheck, FileWarning, ArrowRight, TrendingUp } from "lucide-react";
+import { FileWarning, ArrowRight } from "lucide-react";
 import { useAppStore } from "@/lib/store";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { Badge } from "@/components/ui/badge";
+
 
 export default function FinalShortlistPage() {
   const workspace = useAppStore(state => state.workspace);
+  const selectedCandidate = useAppStore(state => state.selectedCandidate);
+  const setSelectedCandidate = useAppStore(state => state.setSelectedCandidate);
 
   if (!workspace) {
     return (
@@ -32,7 +34,7 @@ export default function FinalShortlistPage() {
     );
   }
 
-  const candidates = workspace.candidates.sort((a, b) => b.final_score - a.final_score).slice(0, 10);
+  const candidates = workspace.candidates.toSorted((a, b) => b.final_score - a.final_score).slice(0, 10);
 
   return (
     <div className="space-y-8">
@@ -59,7 +61,11 @@ export default function FinalShortlistPage() {
             </thead>
             <tbody className="divide-y divide-border/50">
               {candidates.map((candidate) => (
-                <tr key={candidate.candidate_id} className="hover:bg-muted/30 transition-colors">
+                <tr 
+                  key={candidate.candidate_id} 
+                  className={`transition-colors cursor-pointer ${selectedCandidate === candidate.candidate_id ? 'bg-primary/10 border-l-2 border-primary' : 'hover:bg-muted/30'}`}
+                  onClick={() => setSelectedCandidate(candidate.candidate_id)}
+                >
                   <td className="px-6 py-4 font-medium text-primary">#{candidate.overall_rank}</td>
                   <td className="px-6 py-4 font-medium">{candidate.candidate_id}</td>
                   <td className="px-6 py-4 text-blue-500">{(candidate.hybrid_score * 100).toFixed(1)}</td>
