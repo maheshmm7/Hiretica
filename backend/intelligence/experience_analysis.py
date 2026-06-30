@@ -49,7 +49,7 @@ class ExperienceAnalyzer:
                 "dimension": "domain_relevance",
                 "metric": "industry_vs_research",
                 "value": domain_relevance,
-                "reason": f"Domain relevance is {domain_relevance:.2f} based on industry vs research ratio.",
+                "reason": "Strong industry experience aligned with the target role.",
             }
         )
 

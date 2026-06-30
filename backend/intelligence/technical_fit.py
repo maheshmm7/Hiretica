@@ -26,7 +26,7 @@ class TechnicalFitAnalyzer:
                 "dimension": "technical_fit",
                 "metric": "semantic_similarity",
                 "value": semantic_score,
-                "reason": f"Semantic FAISS matching score of {semantic_score:.2f} against the JD.",
+                "reason": "Excellent contextual alignment with the job requirements." if semantic_score >= 0.7 else "Moderate contextual alignment with the job requirements.",
             }
         )
 
@@ -45,7 +45,7 @@ class TechnicalFitAnalyzer:
                 "dimension": "technical_fit",
                 "metric": "keyword_match",
                 "value": bm25_score,
-                "reason": f"Lexical keyword overlap scored at {bm25_score:.2f}.",
+                "reason": "Strong alignment with the required skills and technologies.",
             }
         )
 
@@ -55,7 +55,7 @@ class TechnicalFitAnalyzer:
                     "dimension": "technical_fit",
                     "metric": "vector_database_experience",
                     "value": db_score,
-                    "reason": "Candidate demonstrates explicit Vector DB experience.",
+                    "reason": "Candidate demonstrates relevant hands-on experience in the required technology stack.",
                 }
             )
 

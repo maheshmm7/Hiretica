@@ -9,34 +9,40 @@ class TemplateEngine:
 
     TEMPLATES = {
         "strong_all": [
-            "Demonstrates exceptional technical alignment alongside {pos1}.",
-            "A highly competitive candidate featuring a strong technical fit and {pos1}.",
-            "Presents a robust technical profile complemented by {pos1}.",
+            "{pos1}. Displays strong potential for this position.",
+            "{pos1}. Recommended for recruiter outreach.",
+            "{pos1}. Represents a solid fit for the role.",
+            "{pos1}. Highly competitive profile."
         ],
         "moderate_overall": [
-            "Shows moderate technical alignment, supported by {pos1}.",
-            "Exhibits a balanced technical foundation alongside {pos1}.",
-            "A solid technical baseline, further enhanced by {pos1}.",
+            "{pos1}. Good overall fit based on the available profile.",
+            "{pos1}. Consistent professional background.",
+            "{pos1}. Indicates a solid baseline fit for the position.",
+            "{pos1}."
         ],
         "strong_tech_behavioral_risk": [
-            "Presents strong technical capability, though marked by {neg1} considerations.",
-            "Solid technical alignment, with additional consideration needed for {neg1}.",
-            "Technically proficient, however, {neg1} may require attention.",
+            "{pos1}. Note: {neg1}.",
+            "{pos1}. Verify during outreach: {neg1}.",
+            "{pos1}. {neg1}.",
+            "{pos1}. Consideration needed: {neg1}."
         ],
         "high_behavior_limited_tech": [
-            "Exhibits {pos1}, with slightly lower technical alignment.",
-            "Demonstrates {pos1} which partially offsets moderate technical fit.",
-            "Strong behavioral indicators including {pos1}, despite lower technical match.",
+            "{pos1}. Demonstrates strong foundational potential.",
+            "{pos1}. Good overall fit despite some technical gaps.",
+            "{pos1}. Solid professional background.",
+            "{pos1}."
         ],
         "default_positive": [
-            "Profile is characterized by {pos1}.",
-            "Candidate demonstrates {pos1}.",
-            "Notable strengths include {pos1}.",
+            "{pos1}.",
+            "{pos1}. Good overall fit.",
+            "{pos1}. Consistent professional background.",
+            "{pos1}. Recommended for further review."
         ],
         "default_mixed": [
-            "Displays {pos1}, balanced by {neg1} considerations.",
-            "Shows {pos1}, while presenting {neg1} factors.",
-            "A mixed profile showing {pos1}, but with {neg1}.",
+            "{pos1}. {neg1}.",
+            "{pos1}. Please note: {neg1}.",
+            "{pos1}. Consideration needed: {neg1}.",
+            "{pos1}. Verify during outreach: {neg1}."
         ],
     }
 
@@ -91,15 +97,21 @@ class TemplateEngine:
                 return default_val
             # convert lists or dicts to string if they are raw signals
             f_str = str(f).strip()
-            # remove redundant risk/multiplier words if they don't fit grammatically
+            # remove redundant risk/multiplier words
             f_str = re.sub(
-                r"(?i)\b(risk multiplier|risk score|multiplier)\b[:\s]*[\d\.]+",
+                r"(?i)\b(critical risk|high risk|medium risk|low risk|risk multiplier|risk score|multiplier)\b[:\s]*[\d\.]*",
                 "",
                 f_str,
             )
+            # Remove leading hyphens or spaces
+            f_str = re.sub(r"^\W+", "", f_str)
             # clean up whitespace and punctuation
             f_str = re.sub(r"\s+", " ", f_str)
-            return f_str.rstrip(".,;: \t\n\r")
+            f_str = f_str.rstrip(".,;: \t\n\r")
+            # Capitalize first letter
+            if f_str:
+                f_str = f_str[0].upper() + f_str[1:]
+            return f_str
 
         pos1 = clean_factor(
             pos_factors[0] if pos_factors else None, "a solid overall background"

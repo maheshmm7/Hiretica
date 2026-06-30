@@ -68,7 +68,7 @@ class RiskEngine:
                     "dimension": "risk",
                     "metric": "baseline",
                     "value": risk_multiplier,
-                    "reason": "Low Risk: No significant risk flags detected.",
+                    "reason": "Low overall hiring risk based on the available profile.",
                 }
             )
 

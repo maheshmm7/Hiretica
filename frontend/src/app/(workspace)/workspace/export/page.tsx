@@ -31,7 +31,7 @@ export default function ExportPage() {
     );
   }
 
-  const handleExport = () => {
+  const handleExportCSV = () => {
     // Generate CSV from submission_preview
     const headers = ["candidate_id", "rank", "score", "reasoning"];
     const rows = workspace.submission_preview.map(c => 
@@ -49,12 +49,49 @@ export default function ExportPage() {
     document.body.removeChild(link);
   };
 
+  const handleExportXLSX = async () => {
+    const ExcelJS = (await import('exceljs')).default;
+    const workbook = new ExcelJS.Workbook();
+    const worksheet = workbook.addWorksheet("Recommended Candidates", {
+      views: [{ state: 'frozen', ySplit: 1 }]
+    });
+
+    worksheet.columns = [
+      { header: 'candidate_id', key: 'candidate_id', width: 20 },
+      { header: 'rank', key: 'rank', width: 10, style: { alignment: { horizontal: 'center' } } },
+      { header: 'score', key: 'score', width: 15, style: { numFmt: '0.0000' } },
+      { header: 'reasoning', key: 'reasoning', width: 80, style: { alignment: { wrapText: true, horizontal: 'left' } } }
+    ];
+
+    // Style the header row (Bold)
+    worksheet.getRow(1).font = { bold: true };
+
+    workspace.submission_preview.forEach(c => {
+      worksheet.addRow({
+        candidate_id: c.candidate_id,
+        rank: c.rank,
+        score: c.score,
+        reasoning: c.reasoning
+      });
+    });
+
+    const buffer = await workbook.xlsx.writeBuffer();
+    const blob = new Blob([buffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.setAttribute("href", url);
+    link.setAttribute("download", "Hiretica_Submission.xlsx");
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <div className="space-y-8">
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <PageHeader 
           title="Export Submission" 
-          description="Generate the final CSV artifact required for the hackathon submission."
+          description="Generate the final artifacts required for the hackathon submission."
         />
         <AIStatus status="complete" className="mb-8 bg-emerald-500/10 border border-emerald-500/20 px-3 py-1.5 rounded-full" />
       </div>
@@ -78,9 +115,14 @@ export default function ExportPage() {
             {workspace.submission_preview[0].candidate_id},1,{workspace.submission_preview[0].score},&quot;...&quot;
           </div>
 
-          <Button size="lg" className="w-full gap-2" onClick={handleExport}>
-            <Download className="w-5 h-5" /> Download submission.csv
-          </Button>
+          <div className="flex flex-col sm:flex-row gap-4 w-full justify-center">
+            <Button size="lg" variant="outline" className="w-full sm:w-auto gap-2" onClick={handleExportCSV}>
+              <Download className="w-5 h-5" /> Download submission.csv
+            </Button>
+            <Button size="lg" className="w-full sm:w-auto gap-2" onClick={handleExportXLSX}>
+              <Download className="w-5 h-5" /> Export Submission (.xlsx)
+            </Button>
+          </div>
         </GlassPanel>
       </AnimatedContainer>
     </div>
