@@ -223,11 +223,13 @@ export default function JobUnderstandingPage() {
               <p className="text-xs text-muted-foreground text-center py-8">No recent jobs found.</p>
             ) : (
               history.map(item => (
-                <button 
-                  type="button"
+                <div 
+                  role="button"
+                  tabIndex={0}
                   key={item.id} 
                   className="w-full text-left p-3 rounded-lg bg-background/50 border border-border/50 hover:border-primary/50 transition-colors group cursor-pointer block" 
                   onClick={() => loadHistoryItem(item)}
+                  onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') loadHistoryItem(item); }}
                 >
                   <div className="font-medium text-sm truncate">{item.title}</div>
                   <div className="flex items-center justify-between mt-2">
@@ -236,7 +238,7 @@ export default function JobUnderstandingPage() {
                       <Trash2 className="w-3 h-3" />
                     </Button>
                   </div>
-                </button>
+                </div>
               ))
             )}
           </div>
